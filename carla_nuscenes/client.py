@@ -61,11 +61,11 @@ class Client:
         self.ego_vehicle.blueprint.set_attribute('role_name', 'hero')
         self.ego_vehicle.spawn_actor()
         self.ego_vehicle.get_actor().set_autopilot()
-        self.trafficmanager.ignore_lights_percentage(self.ego_vehicle.get_actor(),100)
-        self.trafficmanager.ignore_signs_percentage(self.ego_vehicle.get_actor(),100)
-        self.trafficmanager.ignore_vehicles_percentage(self.ego_vehicle.get_actor(),100)
-        self.trafficmanager.distance_to_leading_vehicle(self.ego_vehicle.get_actor(),0)
-        self.trafficmanager.vehicle_percentage_speed_difference(self.ego_vehicle.get_actor(),-20)
+        self.trafficmanager.ignore_lights_percentage(self.ego_vehicle.get_actor(),0)
+        self.trafficmanager.ignore_signs_percentage(self.ego_vehicle.get_actor(),0)
+        self.trafficmanager.ignore_vehicles_percentage(self.ego_vehicle.get_actor(),0)
+        self.trafficmanager.distance_to_leading_vehicle(self.ego_vehicle.get_actor(),5)
+        self.trafficmanager.vehicle_percentage_speed_difference(self.ego_vehicle.get_actor(), -10)
         self.trafficmanager.auto_lane_change(self.ego_vehicle.get_actor(), True)
 
         self.vehicles = [Vehicle(world=self.world,**vehicle_config) for vehicle_config in scene_config["vehicles"]]
@@ -117,7 +117,10 @@ class Client:
 
     def generate_random_scene(self,scene_config):
         print("generate random scene start!")
-        self.weather = carla.WeatherParameters(**self.get_random_weather())
+        if scene_config["weather_mode"] == "custom":
+            self.weather = carla.WeatherParameters(**scene_config["weather"])
+        else:
+            self.weather = carla.WeatherParameters(**self.get_random_weather())
         self.world.set_weather(self.weather)
 
 
@@ -136,11 +139,11 @@ class Client:
         self.ego_vehicle.blueprint.set_attribute('role_name', 'hero')
         self.ego_vehicle.spawn_actor()
         self.ego_vehicle.get_actor().set_autopilot()
-        self.trafficmanager.ignore_lights_percentage(self.ego_vehicle.get_actor(),100)
-        self.trafficmanager.ignore_signs_percentage(self.ego_vehicle.get_actor(),100)
-        self.trafficmanager.ignore_vehicles_percentage(self.ego_vehicle.get_actor(),100)
-        self.trafficmanager.distance_to_leading_vehicle(self.ego_vehicle.get_actor(),0)
-        self.trafficmanager.vehicle_percentage_speed_difference(self.ego_vehicle.get_actor(),-20)
+        self.trafficmanager.ignore_lights_percentage(self.ego_vehicle.get_actor(),0)
+        self.trafficmanager.ignore_signs_percentage(self.ego_vehicle.get_actor(),0)
+        self.trafficmanager.ignore_vehicles_percentage(self.ego_vehicle.get_actor(),0)
+        self.trafficmanager.distance_to_leading_vehicle(self.ego_vehicle.get_actor(),5)
+        self.trafficmanager.vehicle_percentage_speed_difference(self.ego_vehicle.get_actor(), -10)
         self.trafficmanager.auto_lane_change(self.ego_vehicle.get_actor(), True)
 
         vehicle_bp_list = self.world.get_blueprint_library().filter("vehicle")
