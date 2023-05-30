@@ -13,7 +13,8 @@ def parse_lidar_data(lidar_data):
     current_channel = 0
     end_idx = lidar_data.get_point_count(current_channel)
     for idx,data in enumerate(lidar_data):
-        point = [data.point.x,data.point.y,data.point.z,data.intensity,current_channel]
+        # point = [data.point.x,data.point.y,data.point.z,data.intensity,current_channel]
+        point = [data.point.x,-data.point.y,data.point.z,data.intensity,current_channel] # change from left-hand coord to right-hand coord
         if idx==end_idx:
             current_channel+=1
             end_idx+=lidar_data.get_point_count(current_channel)

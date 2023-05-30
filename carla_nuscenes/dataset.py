@@ -3,12 +3,14 @@ from .utils import load,dump,generate_token
 import carla
 from .sensor import parse_lidar_data,parse_radar_data
 from copy import deepcopy
+import numpy as np
 
 def save_image(image,path):
     image.save_to_disk(path)
 
 def save_lidar_data(lidar_data,path):
     points = parse_lidar_data(lidar_data)
+    points = points.astype(np.float32)
     points.tofile(path)
 
 def save_radar_data(radar_data,path):

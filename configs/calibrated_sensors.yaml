@@ -3,7 +3,7 @@ CameraRGBBaseOptions: &CameraRGBBaseOptions
   "image_size_y": "900"
   "sensor_tick": "0.083333"
   "fstop": "1.8"
-  "shutter_speed": "20.0"
+  "shutter_speed": "200.0"
 
 RadarBaseOptions: &RadarBaseOptions
   'horizontal_fov': '80'
@@ -173,14 +173,14 @@ sensors:
     location: 
       x: 0
       y: 0
-      z: 2
+      z: 1.84 #2
     rotation:
       yaw: 90
       pitch: 0
       roll: 0
     options: 
       'channels': '32'
-      'points_per_second': '1400000'
+      'points_per_second': '7000000' # '1400000'
       'range': '80'
       'upper_fov': '10'
       'lower_fov': '-30'
