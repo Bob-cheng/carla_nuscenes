@@ -69,6 +69,15 @@ class Client:
         self.trafficmanager.auto_lane_change(self.ego_vehicle.get_actor(), True)
 
         self.vehicles = [Vehicle(world=self.world,**vehicle_config) for vehicle_config in scene_config["vehicles"]]
+        if scene_config['random_NPCs']:
+            vehicle_bp_list = self.world.get_blueprint_library().filter("vehicle")
+            spawn_points = self.world.get_map().get_spawn_points()
+            random.shuffle(spawn_points)
+            for spawn_point in spawn_points[1:random.randint(1,len(spawn_points))]:
+                location = {attr:getattr(spawn_point.location,attr) for attr in ["x","y","z"]}
+                rotation = {attr:getattr(spawn_point.rotation,attr) for attr in ["yaw","pitch","roll"]}
+                bp_name = random.choice(vehicle_bp_list).id
+                self.vehicles.append(Vehicle(world=self.world,bp_name=bp_name,location=location,rotation=rotation))
         vehicles_batch = [SpawnActor(vehicle.blueprint,vehicle.transform)
                             .then(SetAutopilot(FutureActor, True, self.trafficmanager.get_port())) 
                             for vehicle in self.vehicles]
@@ -84,6 +93,19 @@ class Client:
             self.trafficmanager.set_path(vehicle.get_actor(),vehicle.path)
 
         self.walkers = [Walker(world=self.world,**walker_config) for walker_config in scene_config["walkers"]]
+        if scene_config['random_NPCs']:
+            walker_bp_list = self.world.get_blueprint_library().filter("pedestrian")
+            for i in range(random.randint(len(spawn_points),len(spawn_points)*2)):
+                spawn = self.world.get_random_location_from_navigation()
+                if spawn != None:
+                    bp_name=random.choice(walker_bp_list).id
+                    spawn_location = {attr:getattr(spawn,attr) for attr in ["x","y","z"]}
+                    destination=self.world.get_random_location_from_navigation()
+                    destination_location={attr:getattr(destination,attr) for attr in ["x","y","z"]}
+                    rotation = {"yaw":random.random()*360,"pitch":random.random()*360,"roll":random.random()*360}
+                    self.walkers.append(Walker(world=self.world,location=spawn_location,rotation=rotation,destination=destination_location,bp_name=bp_name))
+                else:
+                    print("walker generate fail")
         walkers_batch = [SpawnActor(walker.blueprint,walker.transform) for walker in self.walkers]
         for i,response in enumerate(self.client.apply_batch_sync(walkers_batch)):
             if not response.error:
