@@ -30,7 +30,7 @@ worlds:  #map
         date: "2023-01-13"
         time: "10-45-26"
         timezone: "+0800"
-        capture_vehicle: "c0003"
+        capture_vehicle: "c003"
         location: "chengdu"
         scenes:
           - 

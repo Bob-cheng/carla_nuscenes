@@ -1,5 +1,5 @@
 dataset:
-  root: "./dataset-town10"
+  root: "/data3/share/nuscene/carla_town10_crossing"
   version: "v1.14"
 
 client:
@@ -30,13 +30,13 @@ worlds:  #map
         date: "2023-01-10"
         time: "10-45-20"
         timezone: "+0800"
-        capture_vehicle: "c0003"
+        capture_vehicle: "c003"
         location: "chengdu"
         scenes:
           - 
             count: 1
             custom: True
-            collect_time: 1
+            collect_time: 30
             keyframe_time: 0.5
             weather_mode: "custom"
             weather:
@@ -59,7 +59,7 @@ worlds:  #map
               location: 
                 x: 45.1
                 y: 40.4
-                z: 0.1
+                z: 0.5
               rotation: 
                 yaw: -90
                 pitch: 0.0
@@ -70,6 +70,7 @@ worlds:  #map
                   x: -104.1
                   y: 50.7
                   z: 0
+            random_NPCs: True
             vehicles:
               !include ./configs/vehicles.yaml
             walkers:
