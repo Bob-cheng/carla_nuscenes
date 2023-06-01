@@ -323,7 +323,6 @@ class Dataset:
         else:
             dir = "sweeps"
         log_file = self.get_item("log",self.get_item("scene",self.get_item("sample",sample_data_item["sample_token"])["scene_token"])["log_token"])["logfile"]
-        # name = log_file+"__"+channel+"__"+str(sample_data_item["timestamp"])+"."+sample_data_item["fileformat"]
-        name = log_file+"__"+channel+"__"+"{:0>16}".format(sample_data_item["timestamp"])+"."+sample_data_item["fileformat"]
+        name = log_file+"__"+channel+"__"+str(sample_data_item["timestamp"])+"."+sample_data_item["fileformat"]
         filename = os.path.join(dir,channel,name)
         return filename

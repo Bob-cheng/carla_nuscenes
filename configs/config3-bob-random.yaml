@@ -34,9 +34,9 @@ worlds:  #map
         location: "chengdu"
         scenes:
           - 
-            count: 1 # 10
+            count: 5 # 10
             custom: False
-            collect_time: 10 # 60
+            collect_time: 60 # 60
             keyframe_time: 0.5
             weather_mode: "custom"
             weather:

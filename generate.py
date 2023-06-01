@@ -3,7 +3,8 @@ import os
 import yaml
 from yamlinclude import YamlIncludeConstructor
 YamlIncludeConstructor.add_to_loader_class(loader_class=yaml.FullLoader)
-config_path = "./configs/config3-bob.yaml"
+# config_path = "./configs/config3-bob.yaml"
+config_path = "./configs/config3-bob-random.yaml"
 with open(config_path,'r') as f:
     config = yaml.load(f.read(),Loader=yaml.FullLoader)
 runner = Generator(config)
