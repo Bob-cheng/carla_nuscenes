@@ -1,5 +1,5 @@
 dataset:
-  root: "/data3/share/nuscene/carla_town10_v1"
+  root: "/data3/share/nuscene/carla_town10_v2" # v2 means new sensor caliberations
   version: "v1.14"
 
 client:
@@ -30,7 +30,7 @@ worlds:  #map
         date: "2023-01-13"
         time: "10-45-26"
         timezone: "+0800"
-        capture_vehicle: "c003"
+        capture_vehicle: "c004" # c003: vehicle.tesla.model3 c004: vehicle.mini.cooper_s
         location: "chengdu"
         scenes:
           - 
@@ -54,7 +54,8 @@ worlds:  #map
               mie_scattering_scale: 0 # Controls interaction of light with large particles like pollen or air pollution resulting in a hazy sky with halos around the light sources. When set to 0, there is no contribution.
               rayleigh_scattering_scale: 0.0331 # Controls interaction of light with small particles like air molecules. Dependent on light wavelength, resulting in a blue sky in the day or red sky in the evening.
               dust_storm: 0 # Determines the strength of the dust storm weather. Values range from 0 to 100.
-            ego_bp_name: "vehicle.tesla.model3"
+            # ego_bp_name: "vehicle.tesla.model3"
+            ego_bp_name: "vehicle.mini.cooper_s"
             calibrated_sensors:
               !include ./configs/calibrated_sensors.yaml
             description:

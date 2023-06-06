@@ -18,9 +18,9 @@ sensors:
     name: "CAM_FRONT"
     bp_name: 'sensor.camera.rgb'
     location: 
-      x: 1.5
+      x: 0.5 # 1.5
       y: 0
-      z: 2
+      z: 1.5 # 2
     rotation:
       yaw: 0
       pitch: 0
@@ -32,9 +32,9 @@ sensors:
     name: "CAM_FRONT_RIGHT"
     bp_name: 'sensor.camera.rgb'
     location: 
-      x: 1.5
-      y: 0.7
-      z: 2
+      x: 0.3
+      y: 0.5 # 0.7
+      z: 1.5 # 2
     rotation:
       yaw: 55
       pitch: 0
@@ -46,9 +46,9 @@ sensors:
     name: "CAM_FRONT_LEFT"
     bp_name: 'sensor.camera.rgb'
     location: 
-      x: 1.5
-      y: -0.7
-      z: 2
+      x: 0.3
+      y: -0.5 # -0.7
+      z: 1.5  #2
     rotation:
       yaw: -55
       pitch: 0
@@ -60,9 +60,9 @@ sensors:
     name: "CAM_BACK_LEFT"
     bp_name: 'sensor.camera.rgb'
     location: 
-      x: -0.7
-      y: 0
-      z: 2
+      x: -0.2 #-0.7
+      y: -0.5 # 0
+      z: 1.5 # 2
     rotation:
       yaw: -110
       pitch: 0
@@ -74,9 +74,9 @@ sensors:
     name: "CAM_BACK"
     bp_name: 'sensor.camera.rgb'
     location: 
-      x: -1.5
+      x: -1.2 #-1.5
       y: 0
-      z: 2
+      z: 1.5 #2
     rotation:
       yaw: 180
       pitch: 0
@@ -88,9 +88,9 @@ sensors:
     name: "CAM_BACK_RIGHT"
     bp_name: 'sensor.camera.rgb'
     location: 
-      x: -0.7
-      y: 0
-      z: 2
+      x: -0.2 # -0.7
+      y: 0.5 # 0
+      z: 1.5 # 2
     rotation:
       yaw: 110
       pitch: 0
@@ -171,7 +171,7 @@ sensors:
     name: 'LIDAR_TOP'
     bp_name: 'sensor.lidar.ray_cast'
     location: 
-      x: 0
+      x: -0.2 # 0
       y: 0
       z: 1.84 #2
     rotation:

@@ -64,8 +64,8 @@ class Client:
         self.trafficmanager.ignore_lights_percentage(self.ego_vehicle.get_actor(),0)
         self.trafficmanager.ignore_signs_percentage(self.ego_vehicle.get_actor(),0)
         self.trafficmanager.ignore_vehicles_percentage(self.ego_vehicle.get_actor(),0)
-        self.trafficmanager.distance_to_leading_vehicle(self.ego_vehicle.get_actor(),5)
-        self.trafficmanager.vehicle_percentage_speed_difference(self.ego_vehicle.get_actor(), -10)
+        self.trafficmanager.distance_to_leading_vehicle(self.ego_vehicle.get_actor(),3)
+        self.trafficmanager.vehicle_percentage_speed_difference(self.ego_vehicle.get_actor(), 95)
         self.trafficmanager.auto_lane_change(self.ego_vehicle.get_actor(), True)
 
         spawn_points = self.world.get_map().get_spawn_points()
@@ -166,8 +166,8 @@ class Client:
         self.trafficmanager.ignore_lights_percentage(self.ego_vehicle.get_actor(),0)
         self.trafficmanager.ignore_signs_percentage(self.ego_vehicle.get_actor(),0)
         self.trafficmanager.ignore_vehicles_percentage(self.ego_vehicle.get_actor(),0)
-        self.trafficmanager.distance_to_leading_vehicle(self.ego_vehicle.get_actor(),5)
-        self.trafficmanager.vehicle_percentage_speed_difference(self.ego_vehicle.get_actor(), -10)
+        self.trafficmanager.distance_to_leading_vehicle(self.ego_vehicle.get_actor(),3)
+        self.trafficmanager.vehicle_percentage_speed_difference(self.ego_vehicle.get_actor(), 95)
         self.trafficmanager.auto_lane_change(self.ego_vehicle.get_actor(), True)
 
         vehicle_bp_list = self.world.get_blueprint_library().filter("vehicle")

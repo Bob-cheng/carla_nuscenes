@@ -1,5 +1,5 @@
 dataset:
-  root: "/data3/share/nuscene/carla_town10_crossing"
+  root: "/data3/share/nuscene/carla_town10_crossing_v2"
   version: "v1.14"
 
 client:
@@ -30,13 +30,13 @@ worlds:  #map
         date: "2023-01-10"
         time: "10-45-20"
         timezone: "+0800"
-        capture_vehicle: "c003"
+        capture_vehicle: "c004" # c003: vehicle.tesla.model3 c004: vehicle.mini.cooper_s
         location: "chengdu"
         scenes:
           - 
             count: 1
             custom: True
-            collect_time: 30
+            collect_time: 40
             keyframe_time: 0.5
             weather_mode: "custom"
             weather:
@@ -55,7 +55,8 @@ worlds:  #map
               rayleigh_scattering_scale: 0.0331 # Controls interaction of light with small particles like air molecules. Dependent on light wavelength, resulting in a blue sky in the day or red sky in the evening.
               dust_storm: 0 # Determines the strength of the dust storm weather. Values range from 0 to 100.
             ego_vehicle:
-              bp_name: "vehicle.tesla.model3"
+              # bp_name: "vehicle.tesla.model3"
+              bp_name: "vehicle.mini.cooper_s"
               location: 
                 x: 45.1
                 y: 40.4
