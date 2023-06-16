@@ -1,5 +1,5 @@
 dataset:
-  root: "/data3/share/nuscene/carla_town10_crossing_v2"
+  root: "/data3/share/nuscene/carla_town10_crossing_v2_fix"
   version: "v1.14"
 
 client:
@@ -36,7 +36,7 @@ worlds:  #map
           - 
             count: 1
             custom: True
-            collect_time: 40
+            collect_time: 30
             keyframe_time: 0.5
             weather_mode: "custom"
             weather:
