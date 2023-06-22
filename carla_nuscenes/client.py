@@ -10,11 +10,14 @@ class Client:
     def __init__(self,client_config):
         self.client = carla.Client(client_config["host"],client_config["port"])
         self.client.set_timeout(client_config["time_out"])
+        
 
     def generate_world(self,world_config):
         print("generate world start!")
         self.client.load_world(world_config["map_name"])
         self.world = self.client.get_world()
+        random.seed(world_config["seed"])
+        self.world.set_pedestrians_seed(world_config["seed"])
         self.original_settings = self.world.get_settings()
         self.world.unload_map_layer(carla.MapLayer.ParkedVehicles)
         self.ego_vehicle = None
@@ -28,6 +31,7 @@ class Client:
         self.attribute_dict = {bp.id: get_attribute(bp) for bp in self.world.get_blueprint_library()}
 
         self.trafficmanager = self.client.get_trafficmanager()
+        self.trafficmanager.set_random_device_seed(world_config["seed"])
         self.trafficmanager.set_synchronous_mode(True)
         self.trafficmanager.set_respawn_dormant_vehicles(True)
         self.settings = carla.WorldSettings(**world_config["settings"])
@@ -99,6 +103,7 @@ class Client:
             # for i in range(random.randint(len(spawn_points),len(spawn_points)*2)):
             for i in range(random.randint(2*len(spawn_points),len(spawn_points)*3)):
                 spawn = self.world.get_random_location_from_navigation()
+                # print(spawn)
                 if spawn != None:
                     bp_name=random.choice(walker_bp_list).id
                     spawn_location = {attr:getattr(spawn,attr) for attr in ["x","y","z"]}

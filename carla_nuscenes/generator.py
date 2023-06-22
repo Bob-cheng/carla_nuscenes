@@ -63,6 +63,12 @@ class Generator:
             for frame_count in range(int(scene_config["collect_time"]/self.collect_client.settings.fixed_delta_seconds)):
                 print("frame count:",frame_count)
                 self.collect_client.tick()
+                # if frame_count <= 1500:
+                #     if frame_count == 1500:
+                #         for sensor in self.collect_client.sensors:
+                #             sensor.get_data_list().clear()
+                #     else:
+                #         continue
                 if (frame_count+1)%int(scene_config["keyframe_time"]/self.collect_client.settings.fixed_delta_seconds) == 0:
                     sample_token = self.dataset.update_sample(sample_token,scene_token,*self.collect_client.get_sample())
                     for sensor in self.collect_client.sensors:
